@@ -1,0 +1,32 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8000:10000"
+    environment:
+      PORT: 10000
+      MYSQL_URL: mysql://root:haven_root_password@db:3306/hotel_management
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: haven_root_password
+      MYSQL_DATABASE: hotel_management
+    ports:
+      - "3307:3306"
+    volumes:
+      - hotel_mysql_data:/var/lib/mysql
+      - ./db/hotel_management.sql:/docker-entrypoint-initdb.d/01-hotel_management.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-phaven_root_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+volumes:
+  hotel_mysql_data:

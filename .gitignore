@@ -1,0 +1,22 @@
+# IDE & Editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# OS Files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Logs
+*.log
+error_log
+
+# Node dependencies (if any)
+node_modules/
+package-lock.json
+
+# Environment files
+.env
+.env.local

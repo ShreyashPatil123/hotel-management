@@ -1,0 +1,7 @@
+flowchart TB
+  Browser[Browser: HTML5/CSS3/JavaScript] --> Apache[WAMP Apache]
+  Apache --> PHP[PHP pages and shared includes]
+  PHP --> PDO[PDO prepared statements]
+  PDO --> MySQL[(MySQL Database)]
+  PHP --> Session[PHP session authentication]
+  PHP --> RemoteImages[Room image URLs]

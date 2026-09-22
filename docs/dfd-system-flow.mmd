@@ -1,0 +1,10 @@
+flowchart LR
+  Customer[Customer] -->|register/login| Web[PHP Web Application]
+  Customer -->|search rooms and submit booking| Web
+  Web -->|prepared queries| DB[(MySQL hotel_management)]
+  DB -->|rooms, availability, bookings| Web
+  Web -->|booking confirmation/history| Customer
+  Admin[Admin] -->|authenticated CRUD and status updates| AdminWeb[Admin Module]
+  AdminWeb --> DB
+  Contact[Website visitor] -->|contact form| Web
+  Web -->|store message| DB

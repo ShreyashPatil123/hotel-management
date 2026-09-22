@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: haven-hotel
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    envVars:
+      - key: MYSQL_URL
+        sync: false

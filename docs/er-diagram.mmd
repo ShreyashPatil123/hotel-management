@@ -1,0 +1,8 @@
+erDiagram
+  ADMINS { int id PK string name string email string password }
+  USERS { int id PK string name string email string phone string password }
+  ROOMS { int id PK string room_number string type decimal price int capacity string status }
+  BOOKINGS { int id PK int user_id FK int room_id FK date check_in date check_out int guests decimal total_amount string status }
+  CONTACT_MESSAGES { int id PK string name string email string subject text message }
+  USERS ||--o{ BOOKINGS : creates
+  ROOMS ||--o{ BOOKINGS : receives
